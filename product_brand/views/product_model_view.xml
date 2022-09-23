@@ -154,7 +154,7 @@
         <field name="inherit_id" ref="product.product_template_kanban_view" />
         <field name="arch" type="xml">
             <xpath
-                expr="//div[hasclass('oe_kanban_details')]/strong[1]"
+                expr="//div[hasclass('o_kanban_record_headings')]/strong[1]"
                 position="after"
             >
                 <div>
