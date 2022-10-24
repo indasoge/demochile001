@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+        <record id="approval_request_view_form_inherit" model="ir.ui.view">
+            <field name="model">approval.request</field>
+            <field name="name">approval.request.view.inherit.form</field>
+            <field name="inherit_id" ref="approvals.approval_request_view_form"></field>
+            <field name="arch" type="xml">
+
+                <xpath expr="//sheet//group[1]//group[@name='request_main']//field[@name='partner_id']" position="before">
+                    <!-- <field name="asigned_employee" attrs="{'invisible':[('ext_payment_flag','==','no')]}"/> -->
+                    <field name="has_defined_hours" invisible="1"/>
+                    <field name="has_worked_hours" invisible="1"/>
+                    <field name="has_extra_hours" invisible="1"/>
+                    <field name="defined_hours" attrs="{'invisible':[('has_defined_hours','==','no')], 'required': [('has_defined_hours','==','required')], 'readonly': [('request_status','not in',('new', 'pending'))]}"/>
+                    <field name="worked_hours" attrs="{'invisible':[('has_worked_hours','==','no')], 'required': [('has_worked_hours','==','required')], 'readonly': [('request_status','not in',('new', 'pending'))]}"/>
+                    <field name="extra_hours" attrs="{'invisible':[('has_extra_hours','==','no')], 'required': [('has_extra_hours','==','required')], 'readonly': [('request_status','not in',('new', 'pending'))]}"/>
+                </xpath>
+
+            </field>
+        </record>
+    
+</odoo> 
